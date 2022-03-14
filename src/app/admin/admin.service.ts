@@ -28,7 +28,7 @@ export class AdminService implements OnInit{
     this.beachModelObj.description = this.formValue.value.description;
     this.beachModelObj.image = this.formValue.value.image;
 
-    this.api.postBeach(this.beachModelObj).subscribe(
+    this.api.postBeach(this.beachModelObj, this.theHeaders).subscribe(
       (res) => {
         alert('success');
         // let ref = document.getElementById('cancel')

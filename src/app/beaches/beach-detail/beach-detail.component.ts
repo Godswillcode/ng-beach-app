@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ApiService } from 'src/app/shared/api.service';
@@ -9,6 +10,13 @@ import { ApiService } from 'src/app/shared/api.service';
 export class BeachDetailComponent implements OnInit {
   id: any;
   data: any;
+  access_token = localStorage.getItem('token');
+
+  theHeaders = new HttpHeaders({
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${this.access_token}`,
+  });
+
   constructor(private route: ActivatedRoute, private api: ApiService) {}
 
   ngOnInit(): void {
@@ -16,7 +24,7 @@ export class BeachDetailComponent implements OnInit {
       this.id = +params['id'];
     });
 
-    this.api.getBeachDetail(this.id).subscribe((res) => {
+    this.api.getBeachDetail(this.id, this.theHeaders).subscribe((res) => {
       this.data = res;
     });
   }

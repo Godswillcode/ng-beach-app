@@ -6,10 +6,11 @@ import { map } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
+  url = 'https://laravel-api123.herokuapp.com/api/'
 
   constructor(private http: HttpClient) {}
   postBeach(data: any, theHeaders: any) {
-    return this.http.post<any>('https://laravel-api123.herokuapp.com/api/beaches', data, {
+    return this.http.post<any>(`${this.url}beaches`, data, {
       headers: theHeaders
     }).pipe(
       map((res: any) => {
@@ -19,7 +20,7 @@ export class ApiService {
   }
 
   getBeach(theHeaders: any) {
-    return this.http.get<any>('https://laravel-api123.herokuapp.com/api/beaches', {
+    return this.http.get<any>(`${this.url}beaches`, {
       headers: theHeaders
     }).pipe(
       map((res: any) => {
@@ -29,7 +30,7 @@ export class ApiService {
   }
 
   updateBeach(data: any, id: number, theHeaders: any) {
-    return this.http.put<any>('https://laravel-api123.herokuapp.com/api/beaches/' + id, data, {
+    return this.http.put<any>(`${this.url}beaches/` + id, data, {
       headers: theHeaders
     }).pipe(
       map((res: any) => {
@@ -39,7 +40,7 @@ export class ApiService {
   }
 
   deleteBeach(id: number, theHeaders: any) {
-    return this.http.delete<any>('https://laravel-api123.herokuapp.com/api/beaches/' + id, {
+    return this.http.delete<any>(`${this.url}beaches/` + id, {
       headers: theHeaders
     }).pipe(
       map((res: any) => {
@@ -49,7 +50,7 @@ export class ApiService {
   }
 
   getBeachDetail(id: any, theHeaders) {
-    return this.http.get<any>('https://laravel-api123.herokuapp.com/api/beaches/' + id, {
+    return this.http.get<any>(`${this.url}beaches/` + id, {
       headers: theHeaders
     }).pipe(
       map((res: any) => {
@@ -61,7 +62,7 @@ export class ApiService {
   // get user data
   getUser(theHeaders: any) {
     return this.http
-      .get<any>('https://laravel-api123.herokuapp.com/api/getuser', {
+      .get<any>(`${this.url}getuser`, {
         headers: theHeaders
       })
       .pipe(
