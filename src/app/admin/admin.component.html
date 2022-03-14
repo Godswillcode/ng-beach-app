@@ -1,0 +1,148 @@
+<div class="container">
+  <div class="d-flex justify-content-between mt-3">
+    <div></div>
+    <h3 style="text-decoration: underline">Welcome {{ username }}</h3>
+    <button
+      class="btn btn-warning"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      (click)="clickAddBeach()"
+    >
+      Add Beach
+    </button>
+  </div>
+
+  <table class="table table-bordered mt-3">
+    <thead>
+      <tr>
+        <th scope="col">Beach Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let beach of beachData">
+        <td>{{ beach.id }}</td>
+        <td>{{ beach.name }}</td>
+        <td>{{ beach.type }}</td>
+        <td>{{ beach.description.substring(0, 20) }}...</td>
+        <td><img [src]="beach.image" alt="" style="width: 60px" /></td>
+        <td>
+          <button
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            (click)="onEdit(beach)"
+          >
+            Edit
+          </button>
+          <button class="btn btn-danger mx-3" (click)="deleteBeach(beach)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Beach Details</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="formValue">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >Beach Name</label
+              >
+              <input
+                type="text"
+                formControlName="name"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Enter beach name.."
+              />
+            </div>
+            <div class="mb-3">
+              <label for="beachType" class="form-label">Beach Type</label>
+              <input
+                type="text"
+                formControlName="type"
+                class="form-control"
+                id="beachType"
+                placeholder="Enter beach type e.g private or public.."
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Image</label
+              >
+              <input
+                type="text"
+                formControlName="image"
+                class="form-control"
+                id="exampleInputPassword1"
+                placeholder="Enter image url.."
+              />
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label"
+                >Description</label
+              >
+              <textarea
+                rows="4"
+                class="form-control"
+                formControlName="description"
+                style="resize: none"
+                placeholder="Enter beach description.."
+              ></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cancel
+          </button>
+          <button
+            *ngIf="showAdd"
+            class="btn btn-primary"
+            id="cancel"
+            (click)="postBeachDetails()"
+          >
+            Add
+          </button>
+          <button
+            *ngIf="showUpdate"
+            class="btn btn-primary"
+            id="cancel"
+            (click)="updateBeachDetails()"
+          >
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

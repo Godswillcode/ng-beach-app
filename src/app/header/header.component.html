@@ -1,0 +1,41 @@
+<nav>
+  <div class="container">
+    <div class="nav-inner d-flex justify-content-between align-items-center">
+      <span class="logo fw-lg-bold">L-beaches</span>
+
+      <div class="d-lg-flex gap-5 list-hloder d-none">
+        <a
+          routerLink="/welcome"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          >Home</a
+        >
+        <a routerLink="/about" routerLinkActive="active">About</a>
+        <a routerLink="/beaches" routerLinkActive="active">Beaches</a>
+        <a routerLink="/admin" routerLinkActive="active">Admin</a>
+        <a
+          *ngIf="!authService.loggedIn()"
+          routerLink="/login"
+          routerLinkActive="active"
+          >Log in</a
+        >
+
+        <a
+          *ngIf="!authService.loggedIn()"
+          routerLink="/register"
+          class="register"
+          routerLinkActive="active"
+          >Register</a
+        >
+        <a
+          *ngIf="authService.loggedIn()"
+          (click)="authService.logout()"
+          style="cursor: pointer"
+          >Logout</a
+        >
+      </div>
+
+      <i class="ri-menu-line d-lg-none fs-4"></i>
+    </div>
+  </div>
+</nav>

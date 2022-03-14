@@ -1,0 +1,55 @@
+nav {
+  background: var(--primary);
+  color: white;
+  width: 100%;
+  top: 0;
+  position: sticky;
+  z-index: 999;
+}
+
+.nav-inner {
+  height: 60px;
+}
+
+nav span {
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+nav span:hover {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+nav a {
+  color: rgba(255, 255, 255, 0.7);
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+nav .register {
+  background: #fbec5d;
+  color: green;
+  padding: 3px 15px;
+  font-weight: 400;
+  transition: all;
+  transition-duration: .5s;
+}
+
+nav .register:hover {
+  color: var(--primary);
+  font-weight: normal;
+  background: #fff;
+}
+
+.active {
+  color: #fff !important;
+}
+
+

@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-4">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search beach..."
+        [(ngModel)]="filteredString"
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div
+      *ngFor="let beach of allBeaches | filter: filteredString"
+      class="col-lg-4 col-12"
+    >
+      <div class="card" tabindex="0">
+        <div class="card-image">
+          <img src="{{ beach.image }}" alt="{{beach.name}]" />
+        </div>
+        <div class="card-content">
+          <div class="kicker-wrap">
+            <p class="kicker">{{ beach.type }}</p>
+          </div>
+          <h2>{{ beach.name }} beach</h2>
+          <p>{{ beach.description.substring(0, 60) }}...</p>
+        </div>
+        <div class="card-footer">
+          <a routerLink="{{ beach.id }}" role="button">
+            <span>Read More</span>
+          </a>
+          <svg class="icon" viewBox="0 0 16 16">
+            <g
+              fill="none"
+              stroke-width="1"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-miterlimit="10"
+            >
+              <line x1="0.5" y1="8.5" x2="15.5" y2="8.5"></line>
+              <polyline points="10.5,3.5 15.5,8.5 10.5,13.5 "></polyline>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

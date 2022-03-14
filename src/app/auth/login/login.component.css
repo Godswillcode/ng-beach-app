@@ -1,0 +1,19 @@
+.card {
+  border: none;
+  width: 500px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ccc;
+}
+
+button,
+button:hover {
+  background: var(--primary);
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
