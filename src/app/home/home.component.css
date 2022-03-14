@@ -63,3 +63,11 @@
 p {
   font-size: 17px;
 }
+
+
+/* media */
+@media(max-width: 768px) {
+  .hero h3 {
+    font-size: 30px;
+  }
+}
