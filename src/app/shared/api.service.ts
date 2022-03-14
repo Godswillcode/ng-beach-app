@@ -48,8 +48,10 @@ export class ApiService {
     );
   }
 
-  getBeachDetail(id: any) {
-    return this.http.get<any>('http://localhost:3000/posts/' + id).pipe(
+  getBeachDetail(id: any, theHeaders) {
+    return this.http.get<any>('https://laravel-api123.herokuapp.com/api/beaches/' + id, {
+      headers: theHeaders
+    }).pipe(
       map((res: any) => {
         return res;
       })
